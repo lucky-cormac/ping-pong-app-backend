@@ -8,6 +8,6 @@ In the project directory, run the following commands in sequence:
 
 Runs seeder script to create `admin@admin.com` demo user.
 
-### `yarn run start`
+### `yarn start`
 
 Runs the api server.
