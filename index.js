@@ -1,8 +1,6 @@
-import app from './config/express';
-import vars from './config/vars';
-import { connectMongoose } from './config/mongoose';
-
-const { port, env } = vars;
+const app = require('./config/express');
+const { port, env } = require('./config/vars');
+const { connectMongoose } = require('./config/mongoose');
 
 connectMongoose().then(() => {
   app.listen(port, () =>
@@ -10,4 +8,4 @@ connectMongoose().then(() => {
   );
 });
 
-export default app;
+module.exports = app;

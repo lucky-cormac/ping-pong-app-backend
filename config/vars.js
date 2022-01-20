@@ -1,12 +1,12 @@
-import path from 'path';
-import dotenvSafe from 'dotenv-safe';
+const path = require('path');
+const dotenvSafe = require('dotenv-safe');
 
 dotenvSafe.config({
-  path: path.join(__dirname, '../../.env'),
-  example: path.join(__dirname, '../../.env.example'),
+  path: path.join(__dirname, '../.env'),
+  example: path.join(__dirname, '../.env.example'),
 });
 
-export default {
+module.exports = {
   env: process.env.API_SERVER_NODE_ENV,
   port: process.env.API_SERVER_PORT,
   adminEmail: process.env.ADMIN_EMAIL,

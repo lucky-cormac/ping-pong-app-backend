@@ -1,8 +1,8 @@
-import vars from '../../config/vars';
+const { adminEmail } = require('../../config/vars');
 
-export default [
+module.exports = [
   {
-    email: vars.adminEmail,
+    email: adminEmail,
     password: 'test',
   },
 ];

@@ -1,15 +1,14 @@
-import passport from 'passport';
-import httpStatus from 'http-status';
-import passportLocal from 'passport-local';
-import passportJwt from 'passport-jwt';
-import UserModel from '../api/models/user.model';
-import APIError from '../api/helpers/APIError';
-import vars from './vars';
+const passport = require('passport');
+const httpStatus = require('http-status');
+const passportLocal = require('passport-local');
+const passportJwt = require('passport-jwt');
+const UserModel = require('../api/models/user.model');
+const APIError = require('../api/helpers/APIError');
+const { jwtSecret } = require('./vars');
 
 const LocalStrategy = passportLocal.Strategy;
 const JWTstrategy = passportJwt.Strategy;
 const ExtractJWT = passportJwt.ExtractJwt;
-const { jwtSecret } = vars;
 const localOpts = {
   usernameField: 'email',
   passwordField: 'password',
@@ -69,7 +68,7 @@ const jwtCallback = async (jwtPayload, done) => {
   }
 };
 
-export default () => {
+module.exports = () => {
   passport.use('register', new LocalStrategy(localOpts, registerUserCallback));
   passport.use('login', new LocalStrategy(localOpts, loginUserCallback));
   passport.use('jwt', new JWTstrategy(jwtOpts, jwtCallback));

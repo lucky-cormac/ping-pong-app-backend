@@ -1,9 +1,8 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
-import constants from '../utils/constants';
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+const { BCRYPT_SALT_ROUNDS } = require('../utils/constants');
 
 const Schema = mongoose.Schema;
-const { BCRYPT_SALT_ROUNDS } = constants;
 
 const UserSchema = new Schema({
   email: {
@@ -37,4 +36,4 @@ UserSchema.methods.isValidPassword = (password) => {
 
 const UserModel = mongoose.model('user', UserSchema);
 
-export default UserModel;
+module.exports = UserModel;

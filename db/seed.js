@@ -1,10 +1,8 @@
-import mongoose from 'mongoose';
-import UserModel from '../api/models/user.model';
-import vars from '../config/vars';
-import { connectMongoose, disconnectMongoose } from '../config/mongoose';
-import seedUsers from './data/users';
-
-const { env, adminEmail } = vars;
+const mongoose = require('mongoose');
+const UserModel = require('../api/models/user.model');
+const { env, adminEmail } = require('../config/vars');
+const { connectMongoose, disconnectMongoose } = require('../config/mongoose');
+const seedUsers = require('./data/users');
 
 mongoose.connection.on('error', (err) => {
   console.error(

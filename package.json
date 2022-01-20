@@ -2,6 +2,7 @@
   "name": "ping-pong-app-backend",
   "version": "1.0.0",
   "main": "index.js",
+  "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "bluebird": "^3.7.2",
