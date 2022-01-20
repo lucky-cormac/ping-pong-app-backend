@@ -2,11 +2,12 @@ This repo is ping-pong-app backend.
 
 ## Prerequisite
 
-Rename .env.example to .env and make updates if needed.
+MongoDB should be installed and running already.
 
 ## Run the application
 
-In the project directory, run the following commands in sequence:
+In the project directory, rename `.env.example` to `.env` and make updates if needed.
+Then run the following commands in sequence:
 
 ### `yarn run seed`
 
