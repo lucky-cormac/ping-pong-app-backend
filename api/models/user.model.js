@@ -16,12 +16,12 @@ const UserSchema = new Schema({
   },
 });
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function callback(next) {
   this.password = bcrypt.hashSync(this.password, BCRYPT_SALT_ROUNDS);
   next();
 });
 
-UserSchema.pre('findOneAndUpdate', (next) => {
+UserSchema.pre('findOneAndUpdate', function callback(next) {
   const { password } = this.getUpdate();
   if (password) {
     const encryptedPassword = bcrypt.hashSync(password, BCRYPT_SALT_ROUNDS);
@@ -30,7 +30,7 @@ UserSchema.pre('findOneAndUpdate', (next) => {
   next();
 });
 
-UserSchema.methods.isValidPassword = (password) => {
+UserSchema.methods.isValidPassword = function checkPassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
