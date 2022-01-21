@@ -5,9 +5,7 @@ const APIError = require('../helpers/APIError');
 
 exports.getGame = async (req, res, next) => {
   try {
-    const game = await GameModel.findById(req.params.id)
-      .populate('player1')
-      .populate('player2');
+    const game = await GameModel.findById(req.params.id);
     if (!game) {
       throw new APIError('Game not found.', httpStatus.NOT_FOUND, true);
     }
