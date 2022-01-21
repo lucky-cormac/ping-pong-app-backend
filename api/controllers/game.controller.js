@@ -5,7 +5,9 @@ const APIError = require('../helpers/APIError');
 
 exports.getGame = async (req, res, next) => {
   try {
-    const game = await GameModel.findById(req.params.id);
+    const game = await GameModel.findById(req.params.id)
+      .populate('player1')
+      .populate('player2');
     if (!game) {
       throw new APIError('Game not found.', httpStatus.NOT_FOUND, true);
     }
@@ -25,6 +27,8 @@ exports.getGames = async (req, res, next) => {
   if (isNaN(page)) page = 0;
   if (isNaN(limit)) limit = 10;
   let gameQuery = GameModel.find()
+    .populate('player1')
+    .populate('player2')
     .skip(page * limit)
     .limit(limit);
 
